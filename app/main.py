@@ -14,7 +14,7 @@ from app.config import settings
 from app.core.logging_config import logger
 from app.core.exceptions import BankAPIException
 from app.utils.context import set_request_id, get_request_id
-from app.api.v1.endpoints import auth, accounts, transactions, cards, statements
+from app.api.v1.endpoints import auth, accounts, transactions, cards, statements, admin
 
 
 # Create FastAPI app
@@ -135,6 +135,7 @@ app.include_router(accounts.router, prefix="/api/v1")
 app.include_router(transactions.router, prefix="/api/v1")
 app.include_router(cards.router, prefix="/api/v1")
 app.include_router(statements.router, prefix="/api/v1")
+app.include_router(admin.router)  # Admin dashboard (no /api/v1 prefix)
 
 
 # Health check endpoint
